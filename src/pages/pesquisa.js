@@ -33,7 +33,7 @@ export default class App extends React.Component{
     filter = (event) => {
         const {listMovies} = this.state
         const movieFilter = listMovies.filter((item) =>{
-            if(item.title.include(event.targert.value)){
+            if(item.name.include(event.targert.value)){
                 return true;
             }
         })
