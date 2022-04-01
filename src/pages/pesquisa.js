@@ -26,14 +26,14 @@ export default class App extends React.Component{
         })
         this.setState({
             listMovies: filmes,
-            filmFilter: filmes
+            filmBusc: filmes
         })
     }
 
     filter = (event) => {
         const {listMovies} = this.state
         const movieFilter = listMovies.filter((item) =>{
-            if(item.name.include(event.targert.value)){
+            if(item.title.toLowerCase().includes(event.target.value.toLowerCase())){
                 return true;
             }
         })
@@ -55,7 +55,7 @@ export default class App extends React.Component{
                 </div>
                     {this.state.filmBusc.map((item) => (
                         
-                        <div>
+                        <div key={item.id}>
                            
                             <ul>
                                 <li>{item.title}</li>
