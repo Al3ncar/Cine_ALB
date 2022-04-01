@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/Cine_ALB/static/js/main.aaecd4e0.js",
+    "main.js": "/Cine_ALB/static/js/main.5f9baa50.js",
     "index.html": "/Cine_ALB/index.html",
-    "main.aaecd4e0.js.map": "/Cine_ALB/static/js/main.aaecd4e0.js.map"
+    "main.5f9baa50.js.map": "/Cine_ALB/static/js/main.5f9baa50.js.map"
   },
   "entrypoints": [
-    "static/js/main.aaecd4e0.js"
+    "static/js/main.5f9baa50.js"
   ]
 }
