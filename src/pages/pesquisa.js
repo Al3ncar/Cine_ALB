@@ -1,6 +1,5 @@
 import React from "react"
 import axios from "axios"
-import Carsl from "react-elastic-carousel"
 
 const movies = axios.create({
     baseURL:"https://api.themoviedb.org/3/movie/popular?api_key=4325378346eac4ca5bf909477593a901&language=pt-BR"
@@ -8,11 +7,16 @@ const movies = axios.create({
 
 export default class App extends React.Component{
 
-    state ={
-        listMovies: []
+    state = {
+        listMovies: [],
+        filmBusc:[]
     }
 
     async componentDidMount(){
+        this.getMovie()
+    }
+
+    getMovie = async () => {
         const response = await movies.get()
         const filmes = response.data.results.map(item =>{
             return{
@@ -21,19 +25,38 @@ export default class App extends React.Component{
             }
         })
         this.setState({
-            listMovies: filmes
+            listMovies: filmes,
+            filmFilter: filmes
         })
     }
 
+    filter = (event) => {
+        const {listMovies} = this.state
+        const movieFilter = listMovies.filter((item) =>{
+            if(item.title.include(event.targert.value)){
+                return true;
+            }
+        })
+        this.setState({
+            filmBusc:movieFilter
+        })
+
+    }
     
     render(){
-        let {listMovies} = this.state
         return(
             <div>
+
                 <h1>Filmes</h1>
-                <Carsl>
-                    {listMovies.map((item) => (
+                <div>
+
+                    <input type="text" placeholder="O que procura..." onChange={this.filter}/>
+
+                </div>
+                    {this.state.filmBusc.map((item) => (
+                        
                         <div>
+                           
                             <ul>
                                 <li>{item.title}</li>
                             </ul>
@@ -42,7 +65,6 @@ export default class App extends React.Component{
                             
                         </div>
                     ))}
-                </Carsl>
             </div>
         )
     }
