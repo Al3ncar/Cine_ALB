@@ -33,6 +33,7 @@ export default class App extends React.Component{
     filter = (event) => {
         const {listMovies} = this.state
         const movieFilter = listMovies.filter((item) =>{
+            
             if(item.title.toLowerCase().includes(event.target.value.toLowerCase())){
                 return true;
             }
@@ -56,14 +57,15 @@ export default class App extends React.Component{
                     {this.state.filmBusc.map((item) => (
                         
                         <div key={item.id}>
-                           
+                    
                             <ul>
                                 <li>{item.title}</li>
                             </ul>
                             <img src={item.imgApi} alt={`Banner do filme:${item.title}`}/>
                             <p>{item.overview}</p>
-                            
+
                         </div>
+
                     ))}
             </div>
         )
